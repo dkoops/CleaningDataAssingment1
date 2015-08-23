@@ -7,13 +7,13 @@ The first, MergedData.txt is the complete merge of both the Test and Training da
 
 head(MergedData.txt)
 
-   subject partition activity domain           feature functionname  variable
-1:       2      test standing   time Bodyaccelerometer        meanX 0.2571778
-2:       2      test standing   time Bodyaccelerometer        meanX 0.2860267
-3:       2      test standing   time Bodyaccelerometer        meanX 0.2754848
-4:       2      test standing   time Bodyaccelerometer        meanX 0.2702982
-5:       2      test standing   time Bodyaccelerometer        meanX 0.2748330
-6:       2      test standing   time Bodyaccelerometer        meanX 0.2792199
+*   subject partition activity domain           feature functionname  variable
+*1:       2      test standing   time Bodyaccelerometer        meanX 0.2571778
+*2:       2      test standing   time Bodyaccelerometer        meanX 0.2860267
+*3:       2      test standing   time Bodyaccelerometer        meanX 0.2754848
+*4:       2      test standing   time Bodyaccelerometer        meanX 0.2702982
+*5:       2      test standing   time Bodyaccelerometer        meanX 0.2748330
+*6:       2      test standing   time Bodyaccelerometer        meanX 0.2792199
 
 ##tidydata.txt
 The tidydata.txt file contains the final script output.  This dataset contains the following fields;
@@ -27,10 +27,10 @@ NB. Although the project only required teh mean over activity and subject for ea
 
 head(tidydata.txt)
 
-  subject activity   domain           feature functionname    variable
-1       1   laying fequency Bodyaccelerometer    meanFreqX -0.15879267
-2       1   laying fequency Bodyaccelerometer    meanFreqY  0.09753484
-3       1   laying fequency Bodyaccelerometer    meanFreqZ  0.08943766
-4       1   laying fequency Bodyaccelerometer        meanX -0.93909905
-5       1   laying fequency Bodyaccelerometer        meanY -0.86706521
-6       1   laying fequency Bodyaccelerometer        meanZ -0.88266688
+*  subject activity   domain           feature functionname    variable
+*1       1   laying fequency Bodyaccelerometer    meanFreqX -0.15879267
+*2       1   laying fequency Bodyaccelerometer    meanFreqY  0.09753484
+*3       1   laying fequency Bodyaccelerometer    meanFreqZ  0.08943766
+*4       1   laying fequency Bodyaccelerometer        meanX -0.93909905
+*5       1   laying fequency Bodyaccelerometer        meanY -0.86706521
+*6       1   laying fequency Bodyaccelerometer        meanZ -0.88266688
