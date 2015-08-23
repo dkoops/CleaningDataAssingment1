@@ -39,16 +39,14 @@ rm(activities)
 
 # Load Subjects and merge with training dataset
 trainsubject <- read.csv2("train/subject_train.txt", header=FALSE, sep = " ", col.names = c("subject"))
-#trainsubject$subject <- factor(trainsubject$subject )
 trainsubject <- mutate(trainsubject, partition='train')
-#trainsubject$partition <- factor(trainsubject$partition)
 trainsubject <- mutate(trainsubject, activity=trainY$activity)
 rm(trainY)
 
 # Loading Subjects and merge with test dataset
 testsubject <- read.csv2("test/subject_test.txt", header=FALSE, sep = " ", col.names = c("subject"))
+
 # Create factors after merging with main dataset
-#testsubject$subject <- factor(testsubject$subject )
 testsubject <- mutate(testsubject, partition='test')
 testsubject <- mutate(testsubject, activity=testY$activity)
 rm(testY)
@@ -56,8 +54,6 @@ rm(testY)
 # Filtering Columns
 features <- read.csv2("features.txt", header=FALSE, sep = " ", stringsAsFactors = FALSE)
 names(features) <- c('columnindex', 'columnname')
-#str(features)
-#class(features)
 features <- mutate(features, domaintype=substr(features$columnname,1,1))
 domain <- data.frame( domaintype=c("t","f","a"), domain=c('time', 'fequency','gravity'))
 features <- merge(features, domain) %>%
@@ -65,7 +61,6 @@ features <- merge(features, domain) %>%
     arrange(columnindex)
 
 rm(domain)
-#features$domain <- factor(features$domain)
 
 # 4. Appropriately labels the data set with descriptive variable names.
 # Function - Parse function name to remove non-alpha characters
@@ -89,9 +84,6 @@ functionNames <-sapply(splitnames, parsefunctionName)
 features <- mutate(features, functionNames) 
 rm(functionNames)
 rm(splitnames)
-
-#features$featureNames <- factor(features$featureNames)
-#features$functionNames <- factor(features$functionNames)
 
 # Look for BodyBody and replace with Body
 dupBodyIdx <- grep("BodyBody", features$featureNames)
@@ -146,16 +138,9 @@ numfeatures <- nrow( features)
 cols <- rep(16, numfeatures)
 makefastfile("test/X_test.txt", "ff_Xtest.txt", cols)
 XTest <- fread("ff_Xtest.txt", colClasses="numeric", select=featuresubset$columnindex)
-#format( object.size(intable), units='MB')
-#rm(XTest)
-
-head( cbind(testsubject, XTest), 5)
 
 makefastfile("train/X_train.txt", "ff_Xtrain.txt", cols)
 XTrain <- fread("ff_Xtrain.txt", colClasses="numeric", select=featuresubset$columnindex)
-#format( object.size(intable), units='MB')
-#rm(XTrain)
-rm(features)
 rm(numfeatures)
 rm(cols)
 
@@ -197,8 +182,6 @@ rm(mergedTrainDS)
 mergedDS$subject <- factor(mergedDS$subject)
 format( object.size(mergedDS), units='MB')
 
-# UPTO HERE
-
 # Output
 # 5. From the data set in step 4, creates a second, 
 #    independent tidy data set with the average of each variable 
@@ -214,5 +197,5 @@ tidyDS <- dcast(featureMelt, subject + activity + domain + feature ~ functionnam
 head( tidyDS)
 write.table(tidyDS, 'tidydata.txt', row.name=FALSE)
 
-#intable <- fread('tidydata.txt')
+#tidydata <- fread('tidydata.txt')
 
