@@ -23,7 +23,7 @@ The tidydata.txt file contains the final script output.  This dataset contains t
 * feature - This is the type of telemetary capturing the variable.
 * functionname - Is the agregated calculation including it's angular vector.
 * Variable - Is the mean of all values summarised over subject, activity, domain, feature and functionname. 
-NB. Although the project only required teh mean over activity and subject for each feature, because my dataset split the feature into domain, feature and functioname columns, all three were supplied in the output.
+NB. Although the project only required the mean over activity and subject for each feature, because my dataset split the feature into domain, feature and functioname columns, all three were supplied in the output.
 
 head(tidydata.txt)
 
